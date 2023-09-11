@@ -1,0 +1,36 @@
+﻿@page "/counter"
+
+<PageTitle>Contador</PageTitle>
+
+<h1>Contador de Palabras</h1>
+
+
+<textarea @bind="inputText" rows="5" cols="150"></textarea>
+<br>
+<button @onclick="ContarPalabras">Contar</button>
+
+<textarea rows="1" cols="5">@contarPalabras</textarea>
+
+@* <output>@contarPalabras</output>
+<br>
+<label>@contarPalabras</label>
+
+<div>
+    <p>Número de palabras: @contarPalabras</p>
+</div> *@
+
+
+@code {
+
+    private string inputText = "";
+    private int contarPalabras = 0;
+
+    private void ContarPalabras()
+    {
+        // Divide el texto en palabras usando espacios en blanco como separadores
+        string[] palabra = inputText.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+        // Calcula el número de palabras
+        contarPalabras = palabra.Length;
+    }
+}
